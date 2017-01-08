@@ -1,0 +1,28 @@
+xemacs &
+forks xemacs so the app and terminal runs at the same time
+
+cd 
+change directory
+
+cat ~/.bashrc > tmpfile.txt
+redirects the output from ~/.bashrc to tmpfile.txt
+
+ln -s tmpfile.txt ~/tmp-alias
+symbolic link between ln -s targe_file linkfile_name
+
+ls -al
+list all file and their information within the directory
+
+chmod a+rwx tmpfile.txt
+change mode to all users can access and set read write execute
+
+grep bash /etc/passwd
+
+
+ps -ef | more 
+
+man 2 chown 
+
+gcc test.c 2> error-msg 
+
+

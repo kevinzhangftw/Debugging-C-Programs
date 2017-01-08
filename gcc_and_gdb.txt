@@ -1,0 +1,28 @@
+a)What does the -E option mean? What does the pre-processor do?
+-E means only run the preprocessor. the preprocessor used to be
+called macro processor that does textual transformation on its input before the processing. Any input file is read into memory into many lines. continued line are concatenated into one line. and comments are taken out.
+
+b)hello.o is object file, which is compiled but not linked. Each file is compiled but not linked together. If the file is not compiled then it is just ignored.
+
+c)I get the a.out preprocessed, compiled, and linked
+
+d)Undefined symbols for architecture x86_64:
+  "_main", referenced from:
+     implicit entry/start for main executable
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+The error is saying that they cant find main function of the program.
+
+e)they are no error messages now. but when link the object file, i get
+the same error as before. I am suspecting the linker final step checks 
+for the existence of the main function.
+
+3.Debugging with gdb
+a)[1]    75541 segmentation fault  ./hello
+it means there is a failure condition raised by hardware with memory 
+protection.
+
+
+
+ 
