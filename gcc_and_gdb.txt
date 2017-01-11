@@ -28,7 +28,31 @@ c)__GI_____strtol_l_internal (nptr=0x0, endptr=endptr@entry=0x0, base=base@entry
 #2  0x00007ffff7a4eeb0 in atoi (nptr=<optimized out>) at atoi.c:27
 #3  0x00000000004005cb in main (argc=1, argv=0x7fffffffe138) at hello.c:13
 
+d)(gdb) p argc
+$1 = 1
+(gdb) p argv
+$2 = (char **) 0x7fffffffe138
+argv is a one-dimensional array of strings. the value argv is the address to the char of strings. In this case argv[1] is the first space in the memory block 
 
+e)(gdb) info args give us the info on arg c and arg v
+(gdb) info local lists all local variables of the current stack frame
 
+f)(gdb) p argv[0] return the directory of the executable
+(gdb) p argv[0][1] returns 104 'h'
+(gdb) p argv[1] return memory address 0x0
+
+4
+a)(gdb) p x where x is memory address so the address is printed
+$2 = (int *) 0x0
+(gdb) p y where y is value so value is printed
+$3 = 0
+(gdb) p *x x is already a memory address
+Cannot access memory at address 0x0
+(gdb) p *y
+Cannot access memory at address 0x0
+(gdb) p &x
+$4 = (int **) 0x7fffffffe038
+(gdb) p &y
+$5 = (int *) 0x7fffffffe034
 
  
