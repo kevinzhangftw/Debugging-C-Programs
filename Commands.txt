@@ -1,11 +1,11 @@
 xemacs &
-forks xemacs so the app and terminal runs at the same time
+fork xemacs, the emacs editor so the app and terminal runs at the same time
 
 cd 
 change directory
 
 cat ~/.bashrc > tmpfile.txt
-redirects the output from ~/.bashrc to tmpfile.txt
+redirects the output from ~/.bashrc into a tmpfile.txt
 
 ln -s tmpfile.txt ~/tmp-alias
 symbolic link between ln -s targe_file linkfile_name
@@ -14,15 +14,18 @@ ls -al
 list all file and their information within the directory
 
 chmod a+rwx tmpfile.txt
-change mode to all users can access and set read write execute
+change mode to all users can access and set read write execute, same as chmod 777
 
 grep bash /etc/passwd
-
+search for bash within directory /etc/passwd
 
 ps -ef | more 
+to view processes run on the system -ef option for viewing all of them
 
 man 2 chown 
+manual for change ownership for a given file
 
 gcc test.c 2> error-msg 
+gnu compiler output to error -msg
 
 
