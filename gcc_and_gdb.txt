@@ -55,4 +55,37 @@ $4 = (int **) 0x7fffffffe038
 (gdb) p &y
 $5 = (int *) 0x7fffffffe034
 
- 
+b) x = 0x7fffffffe044(different instance)
+*x = 1
+y = 1 
+
+c)(gdb) p x
+$11 = (int *) 0x7fff0000000a
+(gdb) p y
+$12 = 1
+(gdb) p *x
+Cannot access memory at address 0x7fff0000000a
+(gdb) p *y
+Cannot access memory at address 0x1
+(gdb) p &x
+$13 = (int **) 0x7fffffffe048
+(gdb) p &y
+$14 = (int *) 0x7fffffffe044
+
+d)(gdb) p /x x
+$18 = 0x7fffffffe044
+(gdb) p /x y
+$19 = 0xffffe044
+(gdb) p *x
+$20 = -8124
+(gdb) p *y
+Cannot access memory at address 0xffffffffffffe044
+(gdb) p &x
+$21 = (int **) 0x7fffffffe048
+(gdb) p &y
+$22 = (int *) 0x7fffffffe044
+
+PointersInGdb.c:4:13: warning: initialization makes integer from pointer without a cast [enabled by default]
+     int y = x;
+
+e) -Wall turns on all the warning flags that some users considers questionable
