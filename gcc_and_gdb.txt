@@ -32,32 +32,32 @@ d)(gdb) p argc
 $1 = 1
 (gdb) p argv
 $2 = (char **) 0x7fffffffe138
-argv is a one-dimensional array of strings. the value argv is the address to the char of strings. In this case argv[1] is the first space in the memory block 
+argv is a one-dimensional array of strings. the value argv is the address to the char of strings. In this case argv[1] is the file to be executed 
 
 e)(gdb) info args give us the info on arg c and arg v
 (gdb) info local lists all local variables of the current stack frame
 
 f)(gdb) p argv[0] return the directory of the executable
-(gdb) p argv[0][1] returns 104 'h'
+(gdb) p argv[0][1] returns 104 'h', the first character of the file directory
 (gdb) p argv[1] return memory address 0x0
 
 4
-a)(gdb) p x where x is memory address so the address is printed
+a)(gdb) p x where x is the int pointer to value of 0
 $2 = (int *) 0x0
 (gdb) p y where y is value so value is printed
 $3 = 0
-(gdb) p *x x is already a memory address
+(gdb) p *x dereference value stored at pointer 0x0, which is null
 Cannot access memory at address 0x0
 (gdb) p *y
-Cannot access memory at address 0x0
-(gdb) p &x
+Cannot access memory at address 0x0 because the *y is not defined 
+(gdb) p &x location where pointer x is stored
 $4 = (int **) 0x7fffffffe038
-(gdb) p &y
+(gdb) p &y location where pointer y is stored
 $5 = (int *) 0x7fffffffe034
 
-b) x = 0x7fffffffe044(different instance)
-*x = 1
-y = 1 
+b) x = 0x7fffffffe044 x is now changed to address of y which is same as &y
+*x = 1 dereferences x which is the value store at &y which is now being set to 1
+y = 1 y is reset because x store the address of y and *x resets the y value to 1
 
 c)(gdb) p x
 $11 = (int *) 0x7fff0000000a
@@ -67,25 +67,26 @@ $12 = 1
 Cannot access memory at address 0x7fff0000000a
 (gdb) p *y
 Cannot access memory at address 0x1
-(gdb) p &x
-$13 = (int **) 0x7fffffffe048
-(gdb) p &y
-$14 = (int *) 0x7fffffffe044
 
 d)(gdb) p /x x
-$18 = 0x7fffffffe044
+$18 = 0x7fffffffe044 this is the address of y
 (gdb) p /x y
-$19 = 0xffffe044
+$19 = 0xffffe044 y stores the same value as x
 (gdb) p *x
-$20 = -8124
+$20 = 0xffffe044 deferences x which stores the address of y
 (gdb) p *y
-Cannot access memory at address 0xffffffffffffe044
-(gdb) p &x
-$21 = (int **) 0x7fffffffe048
-(gdb) p &y
-$22 = (int *) 0x7fffffffe044
+Cannot access memory at address 0xffffffffffffe044 this is still undefined.
 
 PointersInGdb.c:4:13: warning: initialization makes integer from pointer without a cast [enabled by default]
      int y = x;
 
 e) -Wall turns on all the warning flags that some users considers questionable
+
+
+9.
+int main(void)
+{
+int *x = 0;
+int y = &x;
+return 0;
+}
